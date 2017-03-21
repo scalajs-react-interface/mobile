@@ -1,7 +1,6 @@
 package sri.mobile
 
 import sri.core._
-import sri.mobile.apis._
 import sri.mobile.apis.android._
 import sri.mobile.apis.ios._
 import sri.mobile.modules.NativeModules
@@ -39,19 +38,13 @@ trait ReactNative extends ReactUniversal {
   val Alert: Alert = js.native
   val Clipboard: Clipboard = js.native
   val AlertIOS: AlertIOS = js.native
-  val AppState: AppState = js.native
-  val CameraRoll: CameraRoll = js.native
-  val InteractionManager: InteractionManager = js.native
   val NetInfo: NetInfo = js.native
   val LayoutAnimation: LayoutAnimation = js.native
   val PushNotificationIOS: PushNotificationIOS = js.native
   val StatusBarIOS: js.Dynamic = js.native
   val VibrationIOS: VibrationIOS = js.native
-  val Dimensions: Dimensions = js.native
-  val Linking: Linking = js.native
   val ToastAndroid: ToastAndroid = js.native
   val BackAndroid: BackAndroid = js.native
-  val UIManager: UIManager = js.native
 
   // native stuff
   val NativeModules: NativeModules = js.native

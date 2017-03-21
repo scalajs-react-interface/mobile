@@ -1,7 +1,6 @@
 package sri.mobile.components
 
-import sri.core.ReactClass
-import sri.universal.components.{UniversalProps, UniversalPropsVal}
+import sri.core.JSComponent
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
@@ -11,24 +10,17 @@ import scala.scalajs.js.{UndefOr => U}
 
 @js.native
 @JSImport("react-native","StatusBar")
-object StatusBarClass extends ReactClass
-
-@js.native
-trait StatusBarM extends js.Object
-
-@ScalaJSDefined
-trait BaseStatusBarProps extends js.Object {
-  var backgroundColor: js.UndefOr[String] = js.undefined
-  var translucent: js.UndefOr[Boolean] = js.undefined
-  var animated: js.UndefOr[Boolean] = js.undefined
-  var barStyle: js.UndefOr[StatusBarStyle] = js.undefined
-  var networkActivityIndicatorVisible: js.UndefOr[Boolean] = js.undefined
-  var showHideTransition: js.UndefOr[StatusBarShowHideTransition] = js.undefined
-  var hidden: js.UndefOr[Boolean] = js.undefined
+object StatusBarComponent extends JSComponent[StatusBarProps] {
+  def setHidden(hidden:Boolean,animation:js.Any = ???): Unit = js.native
+  def setBarStyle(style:js.Any,animated:Boolean = ???): Unit = js.native
+  def setBackgroundColor(color:String,animated:Boolean = ???): Unit = js.native
+  def setNetworkActivityIndicatorVisible(visible:Boolean): Unit = js.native
+  def setTranslucent(translucent:Boolean): Unit = js.native
 }
 
+
 @ScalaJSDefined
-trait BaseStatusBarPropsVal extends js.Object {
+trait StatusBarProps extends js.Object {
   val backgroundColor: js.UndefOr[String] = js.undefined
   val translucent: js.UndefOr[Boolean] = js.undefined
   val animated: js.UndefOr[Boolean] = js.undefined
@@ -38,19 +30,15 @@ trait BaseStatusBarPropsVal extends js.Object {
   val hidden: js.UndefOr[Boolean] = js.undefined
 }
 
-@ScalaJSDefined
-trait StatusBarProps extends BaseStatusBarProps  with UniversalProps[StatusBarM]
-
-@ScalaJSDefined
-trait StatusBarPropsVal extends BaseStatusBarPropsVal  with UniversalPropsVal[StatusBarM]
 
 
 @js.native
 trait StatusBarStyle extends js.Object
 
 object StatusBarStyle {
-  val DEFAULT =  "default".asInstanceOf[StatusBarStyle]
-  val LIGHT_CONTENT =  "light-content".asInstanceOf[StatusBarStyle]
+ @inline def DEFAULT =  "default".asInstanceOf[StatusBarStyle]
+ @inline def LIGHT_CONTENT =  "light-content".asInstanceOf[StatusBarStyle]
+ @inline def DARK_CONTENT =  "dark-content".asInstanceOf[StatusBarStyle]
 }
 
 
@@ -58,6 +46,7 @@ object StatusBarStyle {
 trait StatusBarShowHideTransition extends js.Object
 
 object StatusBarShowHideTransition {
-  val FADE =  "fade".asInstanceOf[StatusBarShowHideTransition]
-  val SLIDE =  "slide".asInstanceOf[StatusBarShowHideTransition]
+  @inline def FADE =  "fade".asInstanceOf[StatusBarShowHideTransition]
+  @inline def SLIDE =  "slide".asInstanceOf[StatusBarShowHideTransition]
+  @inline def NONE =  "none".asInstanceOf[StatusBarShowHideTransition]
 }
