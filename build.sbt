@@ -1,6 +1,6 @@
 name := "mobile"
 
-version := "2017.3.23-beta"
+//version := "2017.3.23-beta"
 
 enablePlugins(ScalaJSPlugin)
 
