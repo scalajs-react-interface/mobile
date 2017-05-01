@@ -8,10 +8,10 @@ import sri.universal.ReactUniversal
 import sri.universal.apis._
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
 
 @js.native
 trait ReactNative extends ReactUniversal {
-
 
   //components
   val DatePickerIOS: ReactClass = js.native
@@ -32,7 +32,6 @@ trait ReactNative extends ReactUniversal {
   val TimerPickerAndroid: TimerPickerAndroid = js.native
   val StatusBar: ReactClass = js.native
 
-
   // apis
 
   val Alert: Alert = js.native
@@ -49,7 +48,6 @@ trait ReactNative extends ReactUniversal {
   // native stuff
   val NativeModules: NativeModules = js.native
 
-
 }
 
 @js.native
@@ -58,7 +56,14 @@ trait ReactPlatForm extends js.Object {
   val Version: Double = js.native
 }
 
+@js.native
+@JSImport("ReactNativeFeatureFlags", JSImport.Namespace)
+object ReactNativeFeatureFlags extends js.Object {
+
+  var useFiber: Boolean = js.native
+
+}
+
 //@js.native
 //@JSImport("react-native",JSImport.Namespace)
 //object ReactNative extends ReactNative
-
