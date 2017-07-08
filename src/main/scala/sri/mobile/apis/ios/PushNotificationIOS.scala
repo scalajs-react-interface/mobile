@@ -1,7 +1,7 @@
 package sri.mobile.apis.ios
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.{Promise, UndefOr}
 
 @js.native
@@ -21,7 +21,8 @@ trait PushNotificationIOS extends js.Object {
 
   def removeEventListener(tpe: String, handler: js.Function): Unit = js.native
 
-  def requestPermissions(permissions: Permissions = ???): Promise[Permissions] = js.native
+  def requestPermissions(
+      permissions: Permissions = ???): Promise[Permissions] = js.native
 
   def popInitialNotification(): js.Dynamic = js.native
 
@@ -35,18 +36,14 @@ trait PushNotificationIOS extends js.Object {
 
   def getBadgeCount(): UndefOr[Int] = js.native
 
-
 }
 
 @js.native
-@JSImport("react-native","PushNotificationIOS")
+@JSImport("react-native", "PushNotificationIOS")
 object PushNotificationIOS extends PushNotificationIOS
 
-
-@ScalaJSDefined
 trait Permissions extends js.Object {
-  var alert : js.UndefOr[Boolean] = js.undefined
-  var badge : js.UndefOr[Boolean] = js.undefined
-  var sound : js.UndefOr[Boolean] = js.undefined
+  var alert: js.UndefOr[Boolean] = js.undefined
+  var badge: js.UndefOr[Boolean] = js.undefined
+  var sound: js.UndefOr[Boolean] = js.undefined
 }
-

@@ -2,7 +2,7 @@ package sri.mobile.apis.android
 
 import scala.scalajs.js
 import scala.scalajs.js.Promise
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 
 @js.native
 trait TimerPickerAndroid extends js.Object {
@@ -11,14 +11,14 @@ trait TimerPickerAndroid extends js.Object {
 
   val timeSetAction: String = js.native
 
-  def open(options: TimerPickerAndroidOptions): Promise[TimerPickerAndroidResponse] = js.native
+  def open(options: TimerPickerAndroidOptions)
+    : Promise[TimerPickerAndroidResponse] = js.native
 }
 
 @js.native
-@JSImport("react-native","TimePickerAndroid")
+@JSImport("react-native", "TimePickerAndroid")
 object TimerPickerAndroid extends TimerPickerAndroid
 
-@ScalaJSDefined
 trait TimerPickerAndroidOptions extends js.Object {
   var hour: js.UndefOr[Int] = js.undefined
   var minute: js.UndefOr[Int] = js.undefined

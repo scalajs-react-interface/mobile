@@ -2,7 +2,7 @@ package sri.mobile.apis.android
 
 import scala.scalajs.js
 import scala.scalajs.js.Promise
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 
 @js.native
 trait DatePickerAndroid extends js.Object {
@@ -11,14 +11,15 @@ trait DatePickerAndroid extends js.Object {
 
   val dateSetAction: String = js.native
 
-  def open(options: DatePickerAndroidOptions): Promise[DatePickerAndroidResult] = js.native
+  def open(
+      options: DatePickerAndroidOptions): Promise[DatePickerAndroidResult] =
+    js.native
 }
 
 @js.native
-@JSImport("react-native","DatePickerAndroid")
+@JSImport("react-native", "DatePickerAndroid")
 object DatePickerAndroid extends DatePickerAndroid
 
-@ScalaJSDefined
 trait DatePickerAndroidOptions extends js.Object {
   var date: js.UndefOr[js.Date] = js.undefined
   var minDate: js.UndefOr[js.Date] = js.undefined
@@ -30,12 +31,11 @@ trait DatePickerAndroidOptions extends js.Object {
 trait DatePickerAndroidMode extends js.Object
 
 object DatePickerAndroidMode {
-  val CALENDER = "calender".asInstanceOf[DatePickerAndroidMode]
-  val SPINNER = "spinner".asInstanceOf[DatePickerAndroidMode]
-  val DEFAULT = "default".asInstanceOf[DatePickerAndroidMode]
+  @inline def CALENDER = "calender".asInstanceOf[DatePickerAndroidMode]
+  @inline def SPINNER = "spinner".asInstanceOf[DatePickerAndroidMode]
+  @inline def DEFAULT = "default".asInstanceOf[DatePickerAndroidMode]
 }
 
-@ScalaJSDefined
 trait DatePickerAndroidResult extends js.Object {
   val action: String
   val year: Int

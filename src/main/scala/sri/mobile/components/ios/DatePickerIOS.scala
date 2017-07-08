@@ -1,15 +1,22 @@
 package sri.mobile.components.ios
 
-import sri.core.JSComponent
+import sri.core.{JSComponent, _}
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
+import sri.universal.MergeJSObjects
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 @js.native
 @JSImport("react-native", "DatePickerIOS")
 object DatePickerIOSComponent extends JSComponent[DatePickerIOSProps]
 
-@ScalaJSDefined
 trait DatePickerIOSProps extends js.Object {
   val timeZoneOffsetInMinutes: js.UndefOr[Int] = js.undefined
   val date: js.UndefOr[js.Date] = js.undefined
@@ -44,5 +51,29 @@ object MinuteInterval {
   @inline def _15 = 15.asInstanceOf[MinuteInterval]
   @inline def _20 = 20.asInstanceOf[MinuteInterval]
   @inline def _30 = 30.asInstanceOf[MinuteInterval]
+
+}
+
+object DatePickerIOS {
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            mode: OP[DatePickerIOSMode] = NoValue,
+            minuteInterval: OP[MinuteInterval] = NoValue,
+            timeZoneOffsetInMinutes: OP[Int] = NoValue,
+            onDateChange: OP[js.Date => _] = NoValue,
+            date: js.Date,
+            @exclude extraProps: OP[DatePickerIOSProps] = NoValue,
+            @exclude key: String | Int = null,
+            @exclude ref: js.Function1[DatePickerIOSComponent.type, Unit] =
+              null)
+    : ReactElement { type Instance = DatePickerIOSComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJSNoInline[DatePickerIOSComponent.type](
+      DatePickerIOSComponent,
+      props.asInstanceOf[DatePickerIOSProps])
+  }
 
 }

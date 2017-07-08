@@ -1,11 +1,19 @@
 package sri.mobile.components.android
 
 import sri.core._
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
 import sri.mobile.DrawerLayoutAndroidEvent
-import sri.universal.ReactEvent
+import sri.universal.{MergeJSObjects, ReactEvent}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.JSConverters.genTravConvertible2JSRichGenTrav
+import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 @js.native
 @JSImport("react-native", "DrawerLayoutAndroid")
@@ -14,7 +22,6 @@ object DrawerLayoutAndroidComponent
   val positions: js.Dynamic = js.native
 }
 
-@ScalaJSDefined
 trait DrawerLayoutAndroidProps extends js.Object {
   val drawerPosition: js.UndefOr[DrawerPosition] = js.undefined
   val drawerWidth: js.UndefOr[Double] = js.undefined
@@ -55,4 +62,26 @@ object DrawerLockMode {
   @inline def UNLOCKED = "unlocked".asInstanceOf[DrawerLockMode]
   @inline def LOCKED_CLOSED = "locked-closed".asInstanceOf[DrawerLockMode]
   @inline def LOCKED_OPEN = "locked-open".asInstanceOf[DrawerLockMode]
+}
+
+object DrawerLayoutAndroid {
+
+  @inline
+  def apply(
+      style: OP[js.Any] = NoValue,
+      @exclude extraProps: OP[DrawerLayoutAndroidProps] = NoValue,
+      @exclude key: String | Int = null,
+      @exclude ref: js.Function1[DrawerLayoutAndroidComponent.type, Unit] =
+        null)(children: ReactNode*)
+    : ReactElement { type Instance = DrawerLayoutAndroidComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJSNoInline[DrawerLayoutAndroidComponent.type](
+      DrawerLayoutAndroidComponent,
+      props.asInstanceOf[DrawerLayoutAndroidProps],
+      children = children.toJSArray)
+  }
+
 }

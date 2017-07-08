@@ -51,19 +51,9 @@ trait ReactNative extends ReactUniversal {
 }
 
 @js.native
-trait ReactPlatForm extends js.Object {
-  val OS: String = js.native
-  val Version: Double = js.native
-}
-
-@js.native
 @JSImport("ReactNativeFeatureFlags", JSImport.Namespace)
 object ReactNativeFeatureFlags extends js.Object {
 
   var useFiber: Boolean = js.native
 
 }
-
-//@js.native
-//@JSImport("react-native",JSImport.Namespace)
-//object ReactNative extends ReactNative
