@@ -1,12 +1,8 @@
 package sri.mobile.components.ios
 
 import sri.core.{JSComponent, _}
-import sri.macros.{
-  FunctionObjectMacro,
-  exclude,
-  OptDefault => NoValue,
-  OptionalParam => OP
-}
+import scalajsplus.macros.{FunctionObjectMacro, exclude, rename}
+import scalajsplus.{OptDefault => NoValue, OptionalParam => OP}
 import sri.universal.MergeJSObjects
 import sri.universal.components._
 
@@ -43,8 +39,7 @@ object SegmentedControlIOS {
       values: js.Array[String],
       @exclude extraProps: OP[SegmentedControlIOSProps] = NoValue,
       @exclude key: String | Int = null,
-      @exclude ref: js.Function1[SegmentedControlIOSComponent.type, Unit] =
-        null)
+      @exclude ref: js.Function1[SegmentedControlIOSComponent.type, Unit] = null)
     : ReactElement { type Instance = SegmentedControlIOSComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => {

@@ -1,12 +1,8 @@
 package sri.mobile.components.android
 
 import sri.core.{JSComponent, _}
-import sri.macros.{
-  FunctionObjectMacro,
-  exclude,
-  OptDefault => NoValue,
-  OptionalParam => OP
-}
+import scalajsplus.macros.{FunctionObjectMacro, exclude, rename}
+import scalajsplus.{OptDefault => NoValue, OptionalParam => OP}
 import sri.mobile.ViewPagerAndroidEvent
 import sri.universal.components._
 import sri.universal.{MergeJSObjects, ReactEvent}
@@ -54,16 +50,16 @@ object KeyboardDismissModeViewPager {
 object ViewPagerAndroid {
 
   @inline
-  def apply(style: OP[js.Any] = NoValue,
-            initialPage: OP[Int] = NoValue,
-            onPageScrollStateChanged: OP[String => _] = NoValue,
-            onPageScroll: OP[ReactEvent[ViewPagerAndroidEvent] => _] = NoValue,
-            onPageSelected: OP[ReactEvent[ViewPagerAndroidEvent] => _] =
-              NoValue,
-            @exclude extraProps: OP[ViewPagerAndroidProps] = NoValue,
-            @exclude key: String | Int = null,
-            @exclude ref: js.Function1[ViewPagerAndroidComponent.type, Unit] =
-              null)(children: ReactNode*)
+  def apply(
+      style: OP[js.Any] = NoValue,
+      initialPage: OP[Int] = NoValue,
+      onPageScrollStateChanged: OP[String => _] = NoValue,
+      onPageScroll: OP[ReactEvent[ViewPagerAndroidEvent] => _] = NoValue,
+      onPageSelected: OP[ReactEvent[ViewPagerAndroidEvent] => _] = NoValue,
+      @exclude extraProps: OP[ViewPagerAndroidProps] = NoValue,
+      @exclude key: String | Int = null,
+      @exclude ref: js.Function1[ViewPagerAndroidComponent.type, Unit] = null)(
+      children: ReactNode*)
     : ReactElement { type Instance = ViewPagerAndroidComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => {

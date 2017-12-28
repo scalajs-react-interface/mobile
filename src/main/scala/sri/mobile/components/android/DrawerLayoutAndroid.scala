@@ -1,12 +1,8 @@
 package sri.mobile.components.android
 
 import sri.core._
-import sri.macros.{
-  FunctionObjectMacro,
-  exclude,
-  OptDefault => NoValue,
-  OptionalParam => OP
-}
+import scalajsplus.macros.{FunctionObjectMacro, exclude, rename}
+import scalajsplus.{OptDefault => NoValue, OptionalParam => OP}
 import sri.mobile.DrawerLayoutAndroidEvent
 import sri.universal.{MergeJSObjects, ReactEvent}
 
@@ -71,8 +67,8 @@ object DrawerLayoutAndroid {
       style: OP[js.Any] = NoValue,
       @exclude extraProps: OP[DrawerLayoutAndroidProps] = NoValue,
       @exclude key: String | Int = null,
-      @exclude ref: js.Function1[DrawerLayoutAndroidComponent.type, Unit] =
-        null)(children: ReactNode*)
+      @exclude ref: js.Function1[DrawerLayoutAndroidComponent.type, Unit] = null)(
+      children: ReactNode*)
     : ReactElement { type Instance = DrawerLayoutAndroidComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => {

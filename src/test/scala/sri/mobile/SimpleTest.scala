@@ -2,7 +2,7 @@ package sri.mobile
 
 class SimpleTest extends BaseTest {
 
-  test("simple", () => {
+  test("simple") {
     expect(true).toBeTruthy()
-  })
+  }
 }

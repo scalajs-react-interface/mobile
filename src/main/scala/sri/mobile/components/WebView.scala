@@ -1,12 +1,8 @@
 package sri.mobile.components
 
 import sri.core.{JSComponent, _}
-import sri.macros.{
-  FunctionObjectMacro,
-  exclude,
-  OptDefault => NoValue,
-  OptionalParam => OP
-}
+import scalajsplus.macros.{FunctionObjectMacro, exclude, rename}
+import scalajsplus.{OptDefault => NoValue, OptionalParam => OP}
 import sri.mobile.WebViewEvent
 import sri.universal.components._
 import sri.universal.{MergeJSObjects, ReactEvent}
@@ -43,8 +39,8 @@ trait WebViewProps extends ViewProps {
   val injectedJavaScript: js.UndefOr[String] = js.undefined
   val scalesPageToFit: js.UndefOr[Boolean] = js.undefined
   val scrollEnabled: js.UndefOr[Boolean] = js.undefined
-  val onNavigationStateChange
-    : js.UndefOr[js.Function1[NavigationState, Unit]] = js.undefined
+  val onNavigationStateChange: js.UndefOr[js.Function1[NavigationState, Unit]] =
+    js.undefined
   val bounces: js.UndefOr[Boolean] = js.undefined
   val allowUniversalAccessFromFileURLs: js.UndefOr[Boolean] = js.undefined
   val domStorageEnabled: js.UndefOr[Boolean] = js.undefined

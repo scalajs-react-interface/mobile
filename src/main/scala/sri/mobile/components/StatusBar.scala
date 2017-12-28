@@ -1,12 +1,8 @@
 package sri.mobile.components
 
 import sri.core.{JSComponent, _}
-import sri.macros.{
-  FunctionObjectMacro,
-  exclude,
-  OptDefault => NoValue,
-  OptionalParam => OP
-}
+import scalajsplus.macros.{FunctionObjectMacro, exclude, rename}
+import scalajsplus.{OptDefault => NoValue, OptionalParam => OP}
 import sri.universal.MergeJSObjects
 
 import scala.scalajs.js
@@ -37,11 +33,12 @@ trait StatusBarProps extends js.Object {
 object StatusBar {
 
   @inline
-  def StatusBar(style: OP[js.Any] = NoValue,
-                @exclude extraProps: OP[StatusBarProps] = NoValue,
-                @exclude key: String | Int = null,
-                @exclude ref: js.Function1[StatusBarComponent.type, Unit] =
-                  null)(children: ReactNode*)
+  def StatusBar(
+      style: OP[js.Any] = NoValue,
+      @exclude extraProps: OP[StatusBarProps] = NoValue,
+      @exclude key: String | Int = null,
+      @exclude ref: js.Function1[StatusBarComponent.type, Unit] = null)(
+      children: ReactNode*)
     : ReactElement { type Instance = StatusBarComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => {
